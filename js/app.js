@@ -1,5 +1,6 @@
 
-const square = document.querySelectorAll('.square');
+const squares = document.querySelectorAll("div.square");
+const button = document.querySelector(".button");
 
 let count = 0;
 
@@ -20,6 +21,22 @@ const choice = (event) => {
     console.log(event.target);
 }
 
+console.log(typeof squares)
 
-document.addEventListener('click', choice)
+
+for (const square of squares) {
+
+    square.addEventListener('click', choice)
+
+    square.addEventListener('click', () => {
+        console.log('square clicked')
+    })
+}
+
+const reset = () => {
+
+    console.log('reset')
+}
+
+button.addEventListener('click', reset)
 
