@@ -36,6 +36,16 @@ for (const square of squares) {
 const reset = () => {
 
     console.log('reset')
+
+    for (const square of squares) {
+
+        square.classList.remove("clicked-x") 
+        square.classList.remove("clicked-o")
+
+        count = 0;
+        
+    }
+
 }
 
 button.addEventListener('click', reset)
