@@ -143,7 +143,10 @@ const reset = () => {
         square.classList.remove("clicked-o")
 
         count = 0;
+
+        square.innerHTML = "<img src='images/orange-32x32.png' />";
         
+        alert.innerText = "Player 1 moves first";
     }
 
     setupBoard();

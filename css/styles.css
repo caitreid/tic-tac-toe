@@ -9,6 +9,7 @@ body {
 }
 
 .board {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -20,15 +21,19 @@ body {
     background-color: aliceblue;
     text-align: center;
     padding: 4rem;
+    color: aliceblue;
 }
 .square:hover {
     cursor: pointer;
 }
+.square img {
+    width: 1rem;
+}
 .clicked-x {
-    background-color: hotpink;
+    background-color: #afd9d4;
 }
 .clicked-o {
-    background-color: rgb(16, 157, 98);
+    background-color: #036b4d;
 }
 .button {
     color: #000000;
