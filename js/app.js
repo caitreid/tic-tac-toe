@@ -5,6 +5,8 @@ const button = document.querySelector(".button");
 const x = document.querySelectorAll(".clicked-x")
 const o = document.querySelectorAll(".clicked-o")
 
+const alert = document.querySelector(".alert")
+
 const myMoves = [];
 const yourMoves = [];
 
@@ -22,19 +24,12 @@ const choice = (event) => {
         // add the css class to the square
         event.target.classList.add('clicked-x')
 
-        // console.log(event.target.classList)        
-        // console.log(event.target)
-
         // add target index to myMoves array
         myMoves.push(id)
 
-        // console.log("my moves:", myMoves)
+        console.log("my moves:", myMoves)
 
-        // console.log(event.target.id)
-
-        
-
-        
+        alert.innerText = "Player 2 moves next"
     }
 
     // second player 
@@ -46,33 +41,56 @@ const choice = (event) => {
         // add target index to the yourMoves array
         yourMoves.push(id)
 
-        // console.log("your moves: ", yourMoves)
+        console.log("your moves: ", yourMoves)
+
+        alert.innerText = "Player 1 moves next"
     }
-    // console.log(event.target);
-    updateSquares();
+
+    updateDOM();
+
+    if (count => 4) {
+
+    }
 }
 
 
 // Add event listener to squares
-for (const square of squares) {
+const setupBoard = () => {
 
-    square.addEventListener('click', choice)
+    for (const square of squares) {
+
+        square.addEventListener('click', choice)
+
+        square.classList.remove("no-hover")
+    
+    }
 
 }
 
-// update DOM
-const updateSquares = () => {
+
+// update DOM to reflect choices after each click
+const updateDOM = () => {
 
     for (let i = 0; i < squares.length; i++) {
 
         if (squares[i].classList.contains("clicked-x")) {
+
             squares[i].innerText = 'x'
+
         }
+
         if (squares[i].classList.contains("clicked-o")) {
+
             squares[i].innerText = 'o'
+
         }
+
         if (squares[i].classList.contains("clicked-o") || squares[i].classList.contains("clicked-x")){
+
+            // make squares un-clickable after choice is made
             squares[i].removeEventListener("click", choice)
+
+            // remove hover state 
             squares[i].classList.add('no-hover')
 
         }
@@ -83,6 +101,7 @@ const updateSquares = () => {
 
 
 // Check for winners / no winners
+// only allow 9 possible moves
 const checkWinner = () => {
 
    const winningCombinations = {
@@ -100,8 +119,13 @@ const checkWinner = () => {
 
    for (const moves in myMoves) {
 
+        console.log(myMoves, "inside checkWinner")
    }
 
+   // if winner 
+   // alert.innerText = "${winner} won!"
+
+   console.log("inside checkWinner")
 }
 
 
@@ -122,10 +146,12 @@ const reset = () => {
         
     }
 
+    setupBoard();
 }
 
 button.addEventListener('click', reset)
 
-// document.addEventListener('DOMContentLoaded', updateSquare)
+
 // only run after count = > 3 or more
-document.addEventListener('DOMContentLoaded', checkWinner);
+// document.addEventListener('DOMContentLoaded', checkWinner);
+document.addEventListener('DOMContentLoaded', setupBoard)
