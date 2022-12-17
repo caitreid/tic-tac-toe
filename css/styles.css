@@ -7,19 +7,17 @@ body {
     max-width: 50%;
     margin: 3rem auto;
 }
-h1 {
-    margin: 1rem;
-}
+
 .board {
-    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-areas: 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
 }
 .square {
     background-color: aliceblue;
-    margin: 1rem;
     text-align: center;
     padding: 4rem;
 }
@@ -33,9 +31,8 @@ h1 {
     background-color: rgb(16, 157, 98);
 }
 .button {
-    /* background-color: #ffffff; */
     color: #000000;
-    padding: 1rem;
+    padding: 1rem 0;
     align-items: end;
     text-align: right;
 }
