@@ -47,3 +47,6 @@ h1 {
 .foot {
     display: inline;
 }
+.no-hover:hover{
+    cursor: unset;
+}
