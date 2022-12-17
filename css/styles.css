@@ -4,9 +4,14 @@ body {
     color: rgb(52, 33, 33);
 }
 .container {
-    margin: 2rem;
+    max-width: 50%;
+    margin: 3rem auto;
+}
+h1 {
+    margin: 1rem;
 }
 .board {
+    
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -17,4 +22,28 @@ body {
     margin: 1rem;
     text-align: center;
     padding: 4rem;
+}
+.square:hover {
+    cursor: pointer;
+}
+.clicked-x {
+    background-color: hotpink;
+}
+.clicked-o {
+    background-color: rgb(16, 157, 98);
+}
+.button {
+    /* background-color: #ffffff; */
+    color: #000000;
+    padding: 1rem;
+    align-items: end;
+    text-align: right;
+}
+.button:hover {
+    cursor: pointer;
+    text-decoration-line: underline;
+    text-underline-offset: 8px;
+}
+.foot {
+    display: inline;
 }
