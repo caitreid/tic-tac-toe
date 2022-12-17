@@ -1,0 +1,20 @@
+body {
+    font-family: 'Unbounded', cursive;
+    background-color: #f3f1e7;
+    color: rgb(52, 33, 33);
+}
+.container {
+    margin: 2rem;
+}
+.board {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: 1fr;
+}
+.square {
+    background-color: aliceblue;
+    margin: 1rem;
+    text-align: center;
+    padding: 4rem;
+}
