@@ -7,8 +7,8 @@ const o = document.querySelectorAll(".clicked-o")
 
 const alert = document.querySelector(".alert")
 
-const myMoves = [];
-const yourMoves = [];
+let myMoves = [];
+let yourMoves = [];
 
 let count = 0;
 
@@ -22,7 +22,16 @@ const choice = (event) => {
     if (count % 2 === 1) {
 
         // add the css class to the square
-        event.target.classList.add('clicked-x')
+        // if you click the orange circle, give the class to its parent (the square)
+        if (event.target.tagName === 'IMG') {
+
+            event.target.parentElement.classList.add('clicked-x');
+
+        } 
+        else {
+            event.target.classList.add('clicked-x')
+        }
+        
 
         // add target index to myMoves array
         myMoves.push(id)
@@ -35,8 +44,18 @@ const choice = (event) => {
     // second player 
     if (count % 2 === 0 ) {
 
-        // add the css class to the square 
-        event.target.classList.add('clicked-o')
+        // add the css class to the square
+        // if you click the orange circle, give the class to its parent (the square)
+        if (event.target.tagName === 'IMG') {
+
+            event.target.parentElement.classList.add('clicked-o');
+
+        } 
+        else {
+
+            event.target.classList.add('clicked-o')
+
+        }
 
         // add target index to the yourMoves array
         yourMoves.push(id)
@@ -48,9 +67,11 @@ const choice = (event) => {
 
     updateDOM();
 
-    if (count => 4) {
-
+    if (count >= 5) {
+        checkWinner();
     }
+
+    checkWinner();
 }
 
 
@@ -75,13 +96,13 @@ const updateDOM = () => {
 
         if (squares[i].classList.contains("clicked-x")) {
 
-            squares[i].innerText = 'x'
+            squares[i].innerText = 'X'
 
         }
 
         if (squares[i].classList.contains("clicked-o")) {
 
-            squares[i].innerText = 'o'
+            squares[i].innerText = 'O'
 
         }
 
@@ -115,21 +136,28 @@ const checkWinner = () => {
         7: "3,5,7"
    }
 
+
+    for (win in winningCombinations) {
+
+        // console.log(winningCombinations[win])
+
+        if (winningCombinations[win] === myMoves) {
+            console.log('win')
+        }
+        // console.log('my moves: ', myMoves)
+    }
+
+    // console.log(winningCombinations)
+
    // loop over arrays to see if there are any winning combos 
 
-   for (const moves in myMoves) {
 
-        console.log(myMoves, "inside checkWinner")
-   }
 
    // if winner 
    // alert.innerText = "${winner} won!"
-
-   console.log("inside checkWinner")
 }
 
-
-
+checkWinner();
 
 
 // Reset the board to play again
@@ -137,12 +165,14 @@ const reset = () => {
 
     console.log('reset')
 
+    count = 0;
+    myMoves = [];
+    yourMoves = [];
+
     for (const square of squares) {
 
         square.classList.remove("clicked-x") 
         square.classList.remove("clicked-o")
-
-        count = 0;
 
         square.innerHTML = "<img src='images/orange-32x32.png' />";
         
