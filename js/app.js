@@ -65,9 +65,6 @@ const choice = (event) => {
         // add target index to the yourMoves array
         yourMoves.push(id)
 
-        // console.log("your moves: ", yourMoves)
-
-        // alert.innerText = "Player 1 moves next"
         alertMessage("Player 1 moves next")
     }
 
@@ -79,7 +76,14 @@ const choice = (event) => {
 
         checkYourMoves(yourMoves);
         console.log("eval your moves:", checkYourMoves(yourMoves))
-        // check(myMoves);
+    }
+
+    // No one won
+    if (count === 9) {
+
+        teardownBoard()
+        alertMessage("Draw! Reset to play again")
+
     }
 }
 
