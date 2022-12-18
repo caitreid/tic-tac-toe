@@ -37,18 +37,17 @@ const choice = (event) => {
             event.target.classList.add('clicked-x')
         }
         
-
         // add target index to myMoves array
         myMoves.push(id)
 
-        // alert.innerText = "Player 2 moves next"
         alertMessage("Player 2 moves next")
     }
 
     // second player 
     if (count % 2 === 0 ) {
 
-        // add the css class to the square. if you click orange dot, give the class to its parent (the square)
+        // add the css class to the square. i
+        // if you click orange dot, give the class to its parent, the square
         if (event.target.tagName === 'IMG') {
 
             event.target.parentElement.classList.add('clicked-o');
@@ -88,8 +87,6 @@ const choice = (event) => {
 }
 
 
-
-
 // Add event listener to squares
 const setupBoard = () => {
 
@@ -114,9 +111,7 @@ const teardownBoard = () => {
     
     }
     
-
 }
-
 
 // update DOM to reflect choices after each click
 const updateDOM = () => {
@@ -148,7 +143,6 @@ const updateDOM = () => {
 }
 
 // Check for winners / no winners
-// only allow 9 possible moves
 
 const winningCombinations = [
     ['1', '2', '3'],
@@ -199,6 +193,7 @@ const checkWinner = (myMoves, yourMoves) => {
 }
 
 let newArr2 = [];
+
 const checkYourMoves = (yourMoves) => {
 
     // check yourMoves
@@ -232,22 +227,6 @@ const checkYourMoves = (yourMoves) => {
     }
 }
 
-
-const check = () => {
-    for (let i = 0; i < myMoves.length; i++) {
-
-        let result = myMoves.every(moves => winningCombinations[i].includes(moves)) 
-            console.log(result, winningCombinations[i]) 
-        if (result) {
-            return true
-        }
-    }
-}
-
-
-
-
-
 // Reset the board to play again
 const reset = () => {
 
@@ -275,7 +254,4 @@ const reset = () => {
 
 button.addEventListener('click', reset)
 
-
-// only run after count = > 3 or more
-// document.addEventListener('DOMContentLoaded', checkWinner);
 document.addEventListener('DOMContentLoaded', setupBoard)
