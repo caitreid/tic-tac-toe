@@ -12,20 +12,25 @@ let yourMoves = [];
 
 let count = 0;
 
+const alertMessage = (message) => {
+    alert.innerText = message
+}
+
 const choice = (event) => {
 
     count++ 
 
-    const id = event.target.id
+    let id = event.target.id
     
     // first player
     if (count % 2 === 1) {
 
-        // add the css class to the square
-        // if you click the orange circle, give the class to its parent (the square)
+        // add the css class to the square. if you click orange dot, give the class to its parent (the square)
         if (event.target.tagName === 'IMG') {
 
             event.target.parentElement.classList.add('clicked-x');
+
+            id = event.target.parentElement.id
 
         } 
         else {
@@ -36,19 +41,19 @@ const choice = (event) => {
         // add target index to myMoves array
         myMoves.push(id)
 
-        console.log("my moves:", myMoves)
-
-        alert.innerText = "Player 2 moves next"
+        // alert.innerText = "Player 2 moves next"
+        alertMessage("Player 2 moves next")
     }
 
     // second player 
     if (count % 2 === 0 ) {
 
-        // add the css class to the square
-        // if you click the orange circle, give the class to its parent (the square)
+        // add the css class to the square. if you click orange dot, give the class to its parent (the square)
         if (event.target.tagName === 'IMG') {
 
             event.target.parentElement.classList.add('clicked-o');
+
+            id = event.target.parentElement.id
 
         } 
         else {
@@ -60,19 +65,25 @@ const choice = (event) => {
         // add target index to the yourMoves array
         yourMoves.push(id)
 
-        console.log("your moves: ", yourMoves)
+        // console.log("your moves: ", yourMoves)
 
-        alert.innerText = "Player 1 moves next"
+        // alert.innerText = "Player 1 moves next"
+        alertMessage("Player 1 moves next")
     }
 
     updateDOM();
 
     if (count >= 5) {
-        checkWinner();
-    }
+        checkWinner(myMoves);
+        console.log("eval my moves:", checkWinner(myMoves))
 
-    checkWinner();
+        checkYourMoves(yourMoves);
+        console.log("eval your moves:", checkYourMoves(yourMoves))
+        // check(myMoves);
+    }
 }
+
+
 
 
 // Add event listener to squares
@@ -85,6 +96,20 @@ const setupBoard = () => {
         square.classList.remove("no-hover")
     
     }
+
+}
+
+const teardownBoard = () => {
+
+    for (const square of squares) {
+
+        square.removeEventListener('click', choice)
+
+        square.classList.add("no-hover")
+    
+    
+    }
+    
 
 }
 
@@ -118,46 +143,105 @@ const updateDOM = () => {
     }
 }
 
-
-
-
 // Check for winners / no winners
 // only allow 9 possible moves
-const checkWinner = () => {
 
-   const winningCombinations = {
-        0: "1,2,3",
-        1: "4,5,6",
-        2: "7,8,9",
-        3: "1,4,7",
-        4: "2,5,8",
-        5: "3,6,9",
-        6: "1,5,9",
-        7: "3,5,7"
-   }
+const winningCombinations = [
+    ['1', '2', '3'],
+    ['4', '5', '6'],
+    ['7', '8', '9'],
+    ['1', '4', '7'],
+    ['2', '5', '8'],
+    ['3', '6', '9'],
+    ['1', '5', '9'],
+    ['3', '5', '7']
+]
+
+let newArr = [];
+
+const checkWinner = (myMoves, yourMoves) => {
+
+    // check myMoves
+    for (let i = 0; i < winningCombinations.length; i++) {
+
+        for (let j = 0; j < winningCombinations[i].length; j++){
+
+            for (let k = 0; k < myMoves.length; k++ ){
+
+                if (winningCombinations[i][j] === myMoves[k]) {
+
+                    if (!newArr.includes(myMoves[k])){
+                        
+                        newArr.push(myMoves[k])
+
+                    }
+                    
+                    let result = winningCombinations[i].every(x => newArr.includes(x))
 
 
-    for (win in winningCombinations) {
+                    if (result) {
 
-        // console.log(winningCombinations[win])
+                        alertMessage("Player 1 won! Reset to Play again.")
+                        teardownBoard();
+                        return true
+                    
+                    }
 
-        if (winningCombinations[win] === myMoves) {
-            console.log('win')
+                }
+
+            };
         }
-        // console.log('my moves: ', myMoves)
     }
-
-    // console.log(winningCombinations)
-
-   // loop over arrays to see if there are any winning combos 
-
-
-
-   // if winner 
-   // alert.innerText = "${winner} won!"
 }
 
-checkWinner();
+let newArr2 = [];
+const checkYourMoves = (yourMoves) => {
+
+    // check yourMoves
+    for (let i = 0; i < winningCombinations.length; i++) {
+
+        for (let j = 0; j < winningCombinations[i].length; j++){
+
+            for (let k = 0; k < yourMoves.length; k++ ){
+
+                if (winningCombinations[i][j] === yourMoves[k]) {
+
+                    if (!newArr2.includes(yourMoves[k])){
+                        
+                        newArr2.push(yourMoves[k])
+
+                    }
+                    
+                    let result2 = winningCombinations[i].every(x => newArr2.includes(x))
+
+                    if (result2) {
+                        alertMessage("Player 2 won! Reset to Play again.")
+                        teardownBoard();
+                        return true
+                    
+                    }
+
+                }
+
+            };
+        }
+    }
+}
+
+
+const check = () => {
+    for (let i = 0; i < myMoves.length; i++) {
+
+        let result = myMoves.every(moves => winningCombinations[i].includes(moves)) 
+            console.log(result, winningCombinations[i]) 
+        if (result) {
+            return true
+        }
+    }
+}
+
+
+
 
 
 // Reset the board to play again
@@ -168,6 +252,9 @@ const reset = () => {
     count = 0;
     myMoves = [];
     yourMoves = [];
+
+    newArr = [];
+    newArr2 = [];
 
     for (const square of squares) {
 

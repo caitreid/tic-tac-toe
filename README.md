@@ -24,7 +24,7 @@ We will be making a Tic Tac Toe game using all of these concepts.
 * You should not be able to click remaining empty cells after the game is over.
 * ✅ Add a reset button that will clear the contents of the board.
 
-* Display a message to indicate which turn is about to be played.
+* ✅ Display a message to indicate which turn is about to be played.
 * Detect draw conditions (ties/cat's game) 
 * Detect winner: Stop game and declare the winner if one player ends up getting three in a row. 
   * Hint: Determine a set of winning combinations. Check those combinations on the board contents after every move.

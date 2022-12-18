@@ -6,6 +6,7 @@ body {
 .container {
     width: 50vw;
     margin: 3rem auto;
+    max-width: 600px;
 }
 
 .board {
@@ -58,5 +59,6 @@ body {
     }
     .button {
         position: absolute;
+        right: 5vw;
     }
 }
