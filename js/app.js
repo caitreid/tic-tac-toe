@@ -179,7 +179,7 @@ const checkWinner = (myMoves, yourMoves) => {
 
                     if (result) {
 
-                        alertMessage("Player 1 won! Reset to Play again.")
+                        alertMessage("Player 1 won! Reset to play again.")
                         teardownBoard();
                         return true
                     
@@ -214,7 +214,7 @@ const checkYourMoves = (yourMoves) => {
                     let result2 = winningCombinations[i].every(x => newArr2.includes(x))
 
                     if (result2) {
-                        alertMessage("Player 2 won! Reset to Play again.")
+                        alertMessage("Player 2 won! Reset to play again.")
                         teardownBoard();
                         return true
                     
