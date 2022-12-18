@@ -4,7 +4,7 @@ body {
     color: rgb(52, 33, 33);
 }
 .container {
-    max-width: 50%;
+    width: 50vw;
     margin: 3rem auto;
 }
 
@@ -20,8 +20,9 @@ body {
 .square {
     background-color: aliceblue;
     text-align: center;
-    padding: 4rem;
+    padding: 5rem;
     color: aliceblue;
+    font-size: 1rem;
 }
 .square:hover {
     cursor: pointer;
@@ -46,9 +47,16 @@ body {
     text-decoration-line: underline;
     text-underline-offset: 8px;
 }
-.foot {
-    display: inline;
-}
 .no-hover:hover{
     cursor: unset;
+}
+
+
+@media screen and (max-width: 800px) {
+    .container {
+        width:90vw;
+    }
+    .button {
+        position: absolute;
+    }
 }
