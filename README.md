@@ -1,5 +1,7 @@
 # Tic Tac Toe
 
+caitreid.github.io/tic-tac-toe
+
 ## Objectives
 
 * Build a tic tac toe game in HTML, CSS, and vanilla JavaScript
