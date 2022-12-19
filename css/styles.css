@@ -4,7 +4,6 @@ body {
     color: rgb(52, 33, 33);
 }
 .container {
-    width: 50vw;
     margin: 3rem auto;
     max-width: 600px;
 }
@@ -56,9 +55,5 @@ body {
 @media screen and (max-width: 800px) {
     .container {
         width:90vw;
-    }
-    .button {
-        position: absolute;
-        right: 5vw;
     }
 }
