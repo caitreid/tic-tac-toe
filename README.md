@@ -1,5 +1,7 @@
 # Tic Tac Toe
 
+<a href="http://caitreid.github.io/tic-tac-toe">http://caitreid.github.io/tic-tac-toe</a>
+
 ## Objectives
 
 * Build a tic tac toe game in HTML, CSS, and vanilla JavaScript
