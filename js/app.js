@@ -71,10 +71,10 @@ const choice = (event) => {
 
     if (count >= 5) {
         checkWinner(myMoves);
-        console.log("eval my moves:", checkWinner(myMoves))
+        // console.log("eval my moves:", checkWinner(myMoves))
 
         checkYourMoves(yourMoves);
-        console.log("eval your moves:", checkYourMoves(yourMoves))
+        // console.log("eval your moves:", checkYourMoves(yourMoves))
     }
 
     // No one won
@@ -230,7 +230,7 @@ const checkYourMoves = (yourMoves) => {
 // Reset the board to play again
 const reset = () => {
 
-    console.log('reset')
+    // console.log('reset');
 
     count = 0;
     myMoves = [];
