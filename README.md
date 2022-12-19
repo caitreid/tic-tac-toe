@@ -1,6 +1,13 @@
 # Tic Tac Toe
 
-<a href="http://caitreid.github.io/tic-tac-toe">http://caitreid.github.io/tic-tac-toe</a>
+### <a href="http://caitreid.github.io/tic-tac-toe">caitreid.github.io/tic-tac-toe</a>
+
+.
+<img src="images/screenshot.png"/>
+
+
+
+
 
 ## Objectives
 
