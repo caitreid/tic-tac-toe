@@ -1,6 +1,6 @@
 # Tic Tac Toe
 
-caitreid.github.io/tic-tac-toe
+<a href="http://caitreid.github.io/tic-tac-toe">http://caitreid.github.io/tic-tac-toe</a>
 
 ## Objectives
 
